@@ -7,6 +7,8 @@ public class CERFID {
         System.out.println("45");
         System.out.println("45");
         System.out.println("45");
+        System.out.println("123");
+        System.out.println("852");
 
 
     }
