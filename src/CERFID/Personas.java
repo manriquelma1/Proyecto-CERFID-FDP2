@@ -23,13 +23,24 @@ public abstract class Personas {
         return Apellido;
     }
 
+    public void setNumDNI(String numDNI) {
+        this.numDNI = numDNI;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setApellido(String apellido) {
+        Apellido = apellido;
+    }
+
     @Override
     public String toString() {
-        return "Personas{" +
-                "numDNI='" + numDNI + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", Apellido='" + Apellido + '\'' +
-                '}';
+        return
+                "DNI='" + numDNI + '\'' +
+                ", Nombre='" + nombre + '\'' +
+                ", Apellido='" + Apellido + '\'';
     }
 }
 

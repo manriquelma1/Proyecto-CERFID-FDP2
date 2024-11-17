@@ -1,6 +1,6 @@
 package CERFID;
 
-class Paciente extends Personas {
+public class Paciente extends Personas {
     private int noSesiones;
     private String prescripcionMedica;
 
@@ -8,4 +8,11 @@ class Paciente extends Personas {
         super(numDNI, nombre, apellido);
     }
 
+    public int getNoSesiones() {
+        return noSesiones;
+    }
+
+    public String getPrescripcionMedica() {
+        return prescripcionMedica;
+    }
 }
