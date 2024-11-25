@@ -18,8 +18,8 @@ public class Terapeutas extends Personas {
 
     @Override
     public String toString() {
-        return "Terapeutas{" +super.toString()+
-                ",codigoTrabajador='" + codigoTrabajador + '\'' +
-                '}';
+        return "Terapeuta| " +super.toString()+
+                ",codigoTrabajador: '" + codigoTrabajador + '\'' +
+                '|';
     }
 }
