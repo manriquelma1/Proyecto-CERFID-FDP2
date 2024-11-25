@@ -6,10 +6,11 @@ import java.util.Scanner;
 
 public class Main {
 
-
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        CERFID addterapeuta = new CERFID();
+        CERFID cerfid = new CERFID();
+
+
         int opcion = -1;
 
         while (opcion != 0) {
@@ -32,29 +33,122 @@ public class Main {
                         String nombre = scan.next();
                         System.out.println("Apellido del Terapeuta: ");
                         String apellidos = scan.next();
-                        System.out.println("Codigo de Trabaajdor: ");
+                        System.out.println("Codigo de Trabajador: ");
                         String codigoTrabajador = scan.next();
-                        addterapeuta.agregarpersonas(new Terapeutas(numDNI,nombre,apellidos,codigoTrabajador));
-                        // Add logic to handle adding an item
+                        cerfid.agregarpersonas(new Terapeutas(numDNI, nombre, apellidos, codigoTrabajador));
                         break;
                     case 2:
-                        System.out.println("You chose to view items.");
-                        // Add logic to handle viewing items
+                        System.out.println("DNI del Paciente: ");
+                        numDNI = scan.next();
+                        System.out.println("Nombre del Paciente: ");
+                        nombre = scan.next();
+                        System.out.println("Apellido del Paciente: ");
+                        apellidos = scan.next();
+                        scan.nextLine();
+                        System.out.println("Prescrición Medica: ");
+                        String prescripcionMedica = scan.nextLine();
+                        System.out.println("Número de sesiones: ");
+                        int noSesiones = scan.nextInt();
+                        cerfid.agregarpersonas(new Paciente(numDNI, nombre, apellidos, noSesiones, prescripcionMedica));
+
                         break;
                     case 3:
-                        System.out.println("You chose to delete an item.");
-                        // Add logic to handle deleting an item
+                        System.out.println("Fecha y hora de la cita (ej. 2024-11-09 10:15)");
+                        scan.nextLine();
+                        String fechaHora = scan.nextLine();
+                        System.out.println("Ingresar el DNi del paciente");
+                        numDNI = scan.next();
+                        Personas personaEncontrada = cerfid.buscarPorDNI(numDNI);
+
+                        if (personaEncontrada instanceof Paciente) {
+                            System.out.println("Paciente encontrado: " + personaEncontrada.getNombre() + " " + personaEncontrada.getApellido());
+
+                            List<Terapeutas> terapeutasDisponibles = cerfid.obtenerTerapeutas();
+                            if (terapeutasDisponibles.isEmpty()) {
+                                System.out.println("No hay terapeutas disponibles");
+                                break;
+                            }
+                            System.out.println("===== Lista de Terapeutas =====");
+                            for (int i = 0; i < terapeutasDisponibles.size(); i++) {
+                                Terapeutas t = terapeutasDisponibles.get(i);
+                                System.out.println(i + " " + t);
+                            }
+                            System.out.println("Seleccione el DNI del Terapeuta: ");
+
+                            int seleccionarTerapeuta = scan.nextInt();
+                            if (seleccionarTerapeuta >= 0 && seleccionarTerapeuta < terapeutasDisponibles.size()) {
+                                Terapeutas terapeutas = terapeutasDisponibles.get(seleccionarTerapeuta);
+                                String nombreTerapeuta = terapeutas.getNombre() +" "+ terapeutas.getApellido();
+                                Citas citas = new Citas(numDNI, personaEncontrada.getNombre(), personaEncontrada.getApellido(), fechaHora,nombreTerapeuta);
+                                cerfid.agregarCita(citas);
+                            }
+
+                        } else {
+                            System.out.println("Error");
+                        }
+                        break;
+
+                    case 4:
+
+                        List<Paciente> listaPacientesRegistrados = cerfid.obtenerPacientes();
+                        if (listaPacientesRegistrados.isEmpty()) {
+                            System.out.println("No hay pacientes registrados");
+                            break;
+                        }
+                        System.out.println("===== Lista de Pacientes =====");
+                        for (int i = 0; i < listaPacientesRegistrados.size(); i++) {
+                            Paciente p = listaPacientesRegistrados.get(i);
+                            System.out.println(p);
+
+                        }
+                        System.out.println("Ingrese el DNI del paciente: ");
+                        numDNI = scan.next();
+                        Personas pacienteSeleccionado = cerfid.buscarPorDNI(numDNI);
+
+                        if (pacienteSeleccionado instanceof Paciente) {
+                            Paciente pac = new Paciente(pacienteSeleccionado.getNumDNI(), pacienteSeleccionado.getNombre(), pacienteSeleccionado.getApellido(), ((Paciente) pacienteSeleccionado).getNoSesiones(), ((Paciente) pacienteSeleccionado).getPrescripcionMedica());
+                            System.out.println("Detalles del Paciente");
+                            System.out.println("Nombre: " + pacienteSeleccionado.getNombre());
+                            System.out.println("Apellido: " + pacienteSeleccionado.getApellido());
+                            System.out.println("Prescripción Médica: " + ((Paciente) pacienteSeleccionado).getPrescripcionMedica());
+                            System.out.println("Número de Sesiones: " + ((Paciente) pacienteSeleccionado).getNoSesiones());
+                        } else {
+                            System.out.println("Error");
+                        }
+                        break;
+                    case 5:
+                        System.out.println("Ingresa el DNI del paciente para ver los detalles de la cita: ");
+                        numDNI = scan.next();
+                        Personas busquedaPaciente = cerfid.buscarPorDNI(numDNI);
+                        if (busquedaPaciente instanceof Paciente) {
+                            Paciente paciente = (Paciente) busquedaPaciente;
+                            System.out.println("Paciente: " + paciente.getNombre() + " " + paciente.getApellido());
+                        }
+                        boolean tienesCitas = false;
+                        System.out.println("Total de citas: " + cerfid.obtenerCitas().size());
+                        for (Citas citas : cerfid.obtenerCitas()) {
+                            if (citas.getNumDNI().equals(busquedaPaciente.getNumDNI())){
+                                System.out.println("===== Citas Registradas =====");
+                                System.out.println("Fecha y hora: "+ citas.getFechaHora());
+                                System.out.println("DNI del paciente: "+ citas.getNumDNI());
+                                System.out.println("Nombre del Paciente"+ citas.getNombre() +" "+ citas.getApellido());
+                                System.out.println("Terapeuta Asignado: "+ citas.getTerapeutaAsignado());
+                                tienesCitas = true;
+                            }
+
+                        }
                         break;
                     case 0:
-                        System.out.println("Exiting the program. Goodbye!");
+                        System.out.println("Cerrando el program.....");
                         break;
                     default:
-                        System.out.println("Invalid choice. Please try again.");
+                        System.out.println("Opción marcada es invalida. Intenta nuevamente");
                 }
-            }
-        }
-        addterapeuta.imprimirListaTrabajadores();
 
+            }
+
+        }
     }
+
 
 }
