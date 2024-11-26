@@ -37,10 +37,12 @@ public abstract class Personas {
 
     @Override
     public String toString() {
-        return
-                "DNI: '" + numDNI + '\'' +
-                        ", Nombre: '" + nombre + '\'' +
-                        ", Apellido: '" + Apellido + '\'';
+        return "Personas{" +
+                "numDNI='" + numDNI + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", Apellido='" + Apellido + '\'' +
+                '}';
     }
+}
 }
 
