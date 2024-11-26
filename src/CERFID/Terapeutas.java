@@ -8,9 +8,7 @@ public class Terapeutas extends Personas {
         this.codigoTrabajador = codigoTrabajador;
     }
 
-    public String getCodigoTrabajador() {
-        return codigoTrabajador;
-    }
+    public String getCodigoTrabajador(){return codigoTrabajador;}
 
     public void setCodigoTrabajador(String codigoTrabajador) {
         this.codigoTrabajador = codigoTrabajador;
