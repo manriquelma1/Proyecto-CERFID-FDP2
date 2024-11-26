@@ -28,10 +28,9 @@ public class Paciente extends Personas {
 
     @Override
     public String toString() {
-        return "Paciente|" +super.toString()+
-                ",noSesiones=" + noSesiones +
-                ", prescripcionMedica='" + prescripcionMedica + '\'' +
-                '|';
+        return "Paciente{" +
+                "prescripcionMedica='" + prescripcionMedica + '\'' +
+                '}';
     }
 }
 
