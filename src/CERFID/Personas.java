@@ -39,8 +39,8 @@ public abstract class Personas {
     public String toString() {
         return
                 "DNI: '" + numDNI + '\'' +
-                ", Nombre: '" + nombre + '\'' +
-                ", Apellido: '" + Apellido + '\'';
+                        ", Nombre: '" + nombre + '\'' +
+                        ", Apellido: '" + Apellido + '\'';
     }
 }
 
