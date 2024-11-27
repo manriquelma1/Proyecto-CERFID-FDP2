@@ -27,36 +27,36 @@ public class Main {
                 opcion = scan.nextInt();
                 switch (opcion) {
                     case 1:
-                        System.out.println("DNI del Terapeuta: ");
+                        System.out.print("DNI del Terapeuta: ");
                         String numDNI = scan.next();
-                        System.out.println("Nombre del Terapeuta: ");
+                        System.out.print("Nombre del Terapeuta: ");
                         String nombre = scan.next();
-                        System.out.println("Apellido del Terapeuta: ");
+                        System.out.print("Apellido del Terapeuta: ");
                         String apellidos = scan.next();
-                        System.out.println("Codigo de Trabajador: ");
+                        System.out.print("Codigo de Trabajador: ");
                         String codigoTrabajador = scan.next();
                         cerfid.agregarpersonas(new Terapeutas(numDNI, nombre, apellidos, codigoTrabajador));
                         break;
                     case 2:
-                        System.out.println("DNI del Paciente: ");
+                        System.out.print("DNI del Paciente: ");
                         numDNI = scan.next();
-                        System.out.println("Nombre del Paciente: ");
+                        System.out.print("Nombre del Paciente: ");
                         nombre = scan.next();
-                        System.out.println("Apellido del Paciente: ");
+                        System.out.print("Apellido del Paciente: ");
                         apellidos = scan.next();
                         scan.nextLine();
-                        System.out.println("Prescrición Medica: ");
+                        System.out.print("Prescrición Medica: ");
                         String prescripcionMedica = scan.nextLine();
-                        System.out.println("Número de sesiones: ");
+                        System.out.print("Número de sesiones: ");
                         int noSesiones = scan.nextInt();
                         cerfid.agregarpersonas(new Paciente(numDNI, nombre, apellidos, noSesiones, prescripcionMedica));
 
                         break;
                     case 3:
-                        System.out.println("Fecha y hora de la cita (ej. 2024-11-09 10:15)");
+                        System.out.print("Fecha y hora de la cita (ej. 2024-11-09 10:15)");
                         scan.nextLine();
                         String fechaHora = scan.nextLine();
-                        System.out.println("Ingresar el DNi del paciente");
+                        System.out.print("Ingresar el DNi del paciente");
                         numDNI = scan.next();
                         Personas personaEncontrada = cerfid.buscarPorDNI(numDNI);
 
