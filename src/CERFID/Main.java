@@ -107,11 +107,11 @@ public class Main {
 
                         if (pacienteSeleccionado instanceof Paciente) {
                             Paciente pac = new Paciente(pacienteSeleccionado.getNumDNI(), pacienteSeleccionado.getNombre(), pacienteSeleccionado.getApellido(), ((Paciente) pacienteSeleccionado).getNoSesiones(), ((Paciente) pacienteSeleccionado).getPrescripcionMedica());
-                            System.out.println("Detalles del Paciente");
-                            System.out.println("Nombre: " + pacienteSeleccionado.getNombre());
-                            System.out.println("Apellido: " + pacienteSeleccionado.getApellido());
-                            System.out.println("Prescripción Médica: " + ((Paciente) pacienteSeleccionado).getPrescripcionMedica());
-                            System.out.println("Número de Sesiones: " + ((Paciente) pacienteSeleccionado).getNoSesiones());
+                            System.out.print("Detalles del Paciente");
+                            System.out.print("Nombre: " + pacienteSeleccionado.getNombre());
+                            System.out.print("Apellido: " + pacienteSeleccionado.getApellido());
+                            System.out.print("Prescripción Médica: " + ((Paciente) pacienteSeleccionado).getPrescripcionMedica());
+                            System.out.print("Número de Sesiones: " + ((Paciente) pacienteSeleccionado).getNoSesiones());
                         } else {
                             System.out.println("Error");
                         }
@@ -128,11 +128,11 @@ public class Main {
                         System.out.println("Total de citas: " + cerfid.obtenerCitas().size());
                         for (Citas citas : cerfid.obtenerCitas()) {
                             if (citas.getNumDNI().equals(busquedaPaciente.getNumDNI())){
-                                System.out.println("===== Citas Registradas =====");
-                                System.out.println("Fecha y hora: "+ citas.getFechaHora());
-                                System.out.println("DNI del paciente: "+ citas.getNumDNI());
-                                System.out.println("Nombre del Paciente"+ citas.getNombre() +" "+ citas.getApellido());
-                                System.out.println("Terapeuta Asignado: "+ citas.getTerapeutaAsignado());
+                                System.out.print("===== Citas Registradas =====");
+                                System.out.print("Fecha y hora: "+ citas.getFechaHora());
+                                System.out.print("DNI del paciente: "+ citas.getNumDNI());
+                                System.out.print("Nombre del Paciente"+ citas.getNombre() +" "+ citas.getApellido());
+                                System.out.print("Terapeuta Asignado: "+ citas.getTerapeutaAsignado());
                                 tienesCitas = true;
                             }
 
