@@ -181,6 +181,7 @@ public class Main {
                                 System.out.println("Apellido: " + pac.getApellido());
                                 System.out.println("Prescripción Médica: " + pac.getPrescripcionMedica());
                                 System.out.println("Número de Sesiones: " + pac.getNoSesiones());
+
                             } else {
                                 System.out.println("No se encontró un paciente con el DNI proporcionado.");
                             }
@@ -206,6 +207,8 @@ public class Main {
                                         System.out.println("DNI del paciente: " + citas.getNumDNI());
                                         System.out.println("Nombre del Paciente: " + citas.getNombre() + " " + citas.getApellido());
                                         System.out.println("Terapeuta Asignado: " + citas.getTerapeutaAsignado());
+                                        System.out.println("==================================================");
+                                        System.out.println("==================================================");
                                         tieneCitas = true;
                                     }
                                 }
